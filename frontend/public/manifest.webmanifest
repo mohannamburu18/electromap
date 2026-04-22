@@ -1,0 +1,12 @@
+{
+  "name": "ElectroMap",
+  "short_name": "ElectroMap",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#06080c",
+  "theme_color": "#06080c",
+  "description": "Smart EV charging station finder",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

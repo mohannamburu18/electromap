@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html, body, #root { height: 100%; }
+body {
+  @apply font-body bg-ink-900 text-slate-100 antialiased;
+  background-image:
+    radial-gradient(1200px 600px at 85% -10%, rgba(34,211,238,0.18), transparent 60%),
+    radial-gradient(900px 500px at 0% 20%, rgba(57,255,20,0.12), transparent 60%),
+    radial-gradient(700px 400px at 50% 120%, rgba(255,43,214,0.10), transparent 60%);
+  background-attachment: fixed;
+}
+
+/* Subtle grid texture */
+body::before {
+  content: "";
+  position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+}
+
+#root { position: relative; z-index: 1; }
+
+.glass {
+  @apply bg-white/5 backdrop-blur-xl border border-white/10;
+}
+.glass-strong {
+  @apply bg-ink-800/80 backdrop-blur-2xl border border-white/10;
+}
+.card {
+  @apply glass rounded-2xl;
+}
+.btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-200 cursor-pointer select-none;
+}
+.btn-primary {
+  @apply btn bg-gradient-to-br from-bolt-400 to-bolt-600 text-ink-900 hover:shadow-glow hover:scale-[1.02] active:scale-100;
+}
+.btn-ghost {
+  @apply btn border border-white/10 text-slate-200 hover:bg-white/5;
+}
+.btn-danger {
+  @apply btn bg-rose-500/90 text-white hover:bg-rose-500;
+}
+.chip {
+  @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium border border-white/10 bg-white/5;
+}
+.input {
+  @apply w-full rounded-xl bg-white/5 border border-white/10 px-4 py-2.5 text-sm outline-none focus:border-bolt-400 focus:ring-2 focus:ring-bolt-400/30 transition;
+}
+.label { @apply block text-xs font-medium text-slate-400 mb-1.5 uppercase tracking-wider; }
+
+.gradient-text {
+  background: linear-gradient(135deg, #22d3ee 0%, #39ff14 50%, #ff2bd6 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Map dark style wrapper */
+.map-dark .leaflet-tile {
+  filter: hue-rotate(200deg) invert(1) brightness(0.95) contrast(0.9) saturate(0.7);
+}
+.leaflet-container { background: #06080c !important; border-radius: 1rem; }
+.leaflet-popup-content-wrapper {
+  background: #0b0f17; color: #e5e7eb; border: 1px solid rgba(255,255,255,0.1);
+}
+.leaflet-popup-tip { background: #0b0f17; }
+
+/* Skeleton shimmer */
+.skeleton {
+  @apply bg-white/5 rounded-lg;
+  background-image: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+  background-size: 1000px 100%;
+  animation: shimmer 2s linear infinite;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.18); }
+
+/* Light theme overrides */
+html:not(.dark) body {
+  @apply bg-slate-50 text-slate-900;
+  background-image:
+    radial-gradient(1200px 600px at 85% -10%, rgba(6,182,212,0.18), transparent 60%),
+    radial-gradient(900px 500px at 0% 20%, rgba(34,197,94,0.12), transparent 60%);
+}
+html:not(.dark) .glass { @apply bg-white/60 border-slate-200; }
+html:not(.dark) .glass-strong { @apply bg-white/90 border-slate-200; }
+html:not(.dark) .input { @apply bg-white border-slate-200 text-slate-900; }
+html:not(.dark) .chip { @apply bg-white border-slate-200 text-slate-700; }
+html:not(.dark) .leaflet-container { background: #f8fafc !important; }
+html:not(.dark) .map-dark .leaflet-tile { filter: none; }
+html:not(.dark) .leaflet-popup-content-wrapper { background: white; color: #0f172a; border-color: #e2e8f0; }
+html:not(.dark) .leaflet-popup-tip { background: white; }
